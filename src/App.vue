@@ -1,7 +1,9 @@
 <template>
-    <login>
+    <div data-bs-theme="dark">
+        <login>
 
-    </login>
+        </login>
+    </div>
 </template>
 
 <script>
