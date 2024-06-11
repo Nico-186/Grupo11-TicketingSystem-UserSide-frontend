@@ -10,18 +10,8 @@
                         <label>Usuario</label>
                         <input type="text" class="form-control" placeholder="Ingrese su usuario">
                     </div>
-                    <div class="form-group">
-                        <label>Contraseña</label>
-                        <div class="row w-100 g-0">
-                            <div class="col p-0">
-                                <input :type="passwordType.type" class="form-control" placeholder="Ingrese su contraseña">
-                            </div>
-                            <div class="col-auto p-0">
-                                <button type="button" class="btn btn-secondary" @click.prevent="isPassword = !isPassword">{{passwordType.text}}</button>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-secondary" @click.prevent="isPassword = true">Ingresar</button>
+                    <password text="Contraseña" placeholder-text="Ingrese su contraseña"></password>
+                    <button type="button" class="btn btn-secondary">Ingresar</button>
                 </div>
             </div>
         </div>
@@ -30,26 +20,11 @@
 </template>
 
 <script>
+import password from './Utils/Password.vue';
+
 export default {
-    computed: {
-        passwordType() {
-            if (this.isPassword) {
-                return {
-                    type: 'password',
-                    text: 'Mostrar'
-                }
-            } else {
-                return {
-                    type: 'text',
-                    text: 'Ocultar'
-                }
-            }
-        }
+    components: {
+        password
     },
-    data() {
-        return {
-            isPassword: true
-        }
-    }
 }
 </script>
