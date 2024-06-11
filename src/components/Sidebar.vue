@@ -14,7 +14,6 @@
             <a v-for="link in links(role)" class="nav-link active fs-6 py-2" :href="link.link">{{link.text}}</a>
         </div>
     </div>
-
 </template>
 
 <script>
