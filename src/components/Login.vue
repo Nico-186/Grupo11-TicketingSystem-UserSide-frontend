@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid vh-100">
-        <div class="row align-items-center justify-content-center bg-light text-dark" style="height: 10%;">
+        <div class="row align-items-center justify-content-center" style="height: 10%; background-color: #0d6efd;">
             <h2 class="w-auto m-0">Dashboard</h2>
         </div>
         <div class="row align-items-center justify-content-center" style="height: 80%;">
@@ -21,7 +21,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-secondary" @click="isPassword = true">Ingresar</button>
+                    <button type="button" class="btn btn-secondary" @click.prevent="isPassword = true">Ingresar</button>
                 </div>
             </div>
         </div>

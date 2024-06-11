@@ -1,20 +1,20 @@
 <template>
     <div>
-        <dashboard>
-        </dashboard>
+        <sidebar>
+        </sidebar>
         <!-- <login>
         </login> -->
     </div>
 </template>
 
 <script>
-import dashboard from './components/Dashboard.vue';
+import sidebar from './components/Sidebar.vue';
 import login from './components/Login.vue';
 
 export default {
     components: {
         login,
-        dashboard
+        sidebar
     },
     data() {
         return {
