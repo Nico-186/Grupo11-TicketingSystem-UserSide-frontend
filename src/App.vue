@@ -1,12 +1,12 @@
 <template>
    <div class="container-fluid vh-100 p-0">
-        <sidebar>
+        <sidebar ref="sidebar">
         </sidebar>
-        <div class="container-fluid p-0" style="height: 90%;">
-            <!-- <gestionDatos>
-            </gestionDatos> -->
-             <gestionUsuario>
-            </gestionUsuario>
+        <div class="container-fluid" style="height: 90%;" :style="checkSidebar ? 'padding: 0% 0% 0% 20%;' : 'padding: 0%;'" >
+            <gestionDatos>
+            </gestionDatos>
+             <!-- <gestionUsuario>
+            </gestionUsuario> -->
             <!-- <listaUsuariosAdmin>
             </listaUsuariosAdmin>  -->
         </div> 
@@ -32,9 +32,22 @@ export default {
         listaUsuariosAdmin,
         gestionUsuario
     },
+    computed: {
+        checkSidebar() {
+            if (this.mounted) {
+                return this.$refs.sidebar.dashboard;
+            } else {
+                return false;
+            }
+        }
+    },
     data() {
         return {
+            mounted: false
         }
+    },
+    mounted() {
+        this.mounted = true
     }
 }
 </script>

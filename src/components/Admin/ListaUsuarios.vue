@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid w-100 h-100" style="padding: 2%;">
+    <div class="container-fluid w-100 h-100 p-4" >
         <div class="border w-100 h-100" style="background-color: #171a1c;">
             <div class="d-flex flex-column h-100">
                 <p class="w-100 mb-0 px-3 py-2 fs-5">Usuarios</p>

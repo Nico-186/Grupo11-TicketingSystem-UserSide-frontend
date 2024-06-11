@@ -8,7 +8,7 @@
             <span class="navbar-toggler-icon px-3" style="visibility: hidden;"></span>
         </div>
     </nav>
-    <div class="offcanvas offcanvas-start w-auto h-100" style="z-index: 1;" :class="dashboard ? 'show' : ''"
+    <div class="offcanvas offcanvas-start h-100" style="z-index: 1; width: 20%;" :class="dashboard ? 'show' : ''"
         tabindex="-1" :style="{ visibility: dashboard ? 'visible' : 'hidden' }">
         <div class="offcanvas-body py-0">
             <div class="w-100" style="height: 10%;"></div>

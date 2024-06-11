@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid h-100 v-100" style="padding: 2% 25%;">
+    <div class="container-fluid h-100 v-100 py-4" style="padding-left:25%; padding-right: 25%">
         <div class="d-flex flex-column align-items-center">
             <div class="d-flex justify-content-center m-2 w-100">
                 <h4 class="w-auto">{{ isCreate ? 'Crear Usuario' : 'Editar Usuario' }}</h4>
