@@ -1,7 +1,7 @@
 # Sistema de tickets IT
 Projecto de demostracción para el ramo Computación distribuida | Grupo 11
 
-Sistema simple para gestión de tickets y usuarios
+Sistema simple para gestión de tickets, este es el lado de gestión de usuarios y sus roles
 ## Interfaces
 ### Inicio de sesion
 ![CompDist Login](https://github.com/Nico-186/Grupo11-Ticketing-System/assets/102489026/97d03cc1-97d6-482e-be3a-c018f50eeed3)
