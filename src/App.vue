@@ -2,13 +2,13 @@
    <div class="container-fluid vh-100 p-0">
         <sidebar ref="sidebar">
         </sidebar>
-        <div class="container-fluid" style="height: 90%;" :style="checkSidebar ? 'padding: 0% 0% 0% 20%;' : 'padding: 0%;'" >
-            <gestionDatos>
-            </gestionDatos>
+        <div class="container-fluid" style="height: 90%;" :style="checkSidebar ? 'padding: 0% 0% 0% 17%;' : 'padding: 0%;'" >
+            <!-- <gestionDatos>
+            </gestionDatos> -->
              <!-- <gestionUsuario>
             </gestionUsuario> -->
-            <!-- <listaUsuariosAdmin>
-            </listaUsuariosAdmin>  -->
+            <listaUsuariosAdmin>
+            </listaUsuariosAdmin> 
         </div> 
     </div>
 

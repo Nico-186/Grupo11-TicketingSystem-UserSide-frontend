@@ -34,53 +34,52 @@ export default {
         return {
             activeListItem: -1,
             usuarios:[{
-                username:'Ejemplo 1',
+                username:'UsuTec01',
                 rol: 'Tecnico'
             },
             {
-                username:'Ejemplo 2',
+                username:'UsuAdm01',
                 rol: 'Administrador'
             },
             {
-                username:'Jefesote',
+                username:'UsuAdm02',
                 rol: 'Administrador'
             },
             {
-                username:'LAURA',
+                username:'UsuAdm03',
+                rol: 'Administrador'
+            },
+            {
+                username:'UsuBasic01',
                 rol: 'Usuario'
-            },{
-                username:'Nico.Miaus',
+            },
+            {
+                username:'UsuBasic02',
+                rol: 'Usuario'
+            },
+            {
+                username:'UsuTec02',
+                rol: 'Tecnico'
+            },
+            {
+                username:'UsuTec03',
+                rol: 'Tecnico'
+            },
+            {
+                username:'UsuTec04',
+                rol: 'Tecnico'
+            },
+            {
+                username:'UsuTec05',
+                rol: 'Tecnico'
+            },
+            {
+                username:'UsuAdm04',
                 rol: 'Administrador'
-            },{
-                username:'Nico.Miaus',
-                rol: 'Administrador'
-            },{
-                username:'Nico.Miaus',
-                rol: 'Administrador'
-            },{
-                username:'Nico.Miaus',
-                rol: 'Administrador'
-            },{
-                username:'Nico.Miaus',
-                rol: 'Administrador'
-            },{
-                username:'Nico.Miaus',
-                rol: 'Administrador'
-            },{
-                username:'Nico.Miaus',
-                rol: 'Administrador'
-            },{
-                username:'Nico.Miaus',
-                rol: 'Administrador'
-            },{
-                username:'Nico.Miaus',
-                rol: 'Administrador'
-            },{
-                username:'Nico.Miaus',
-                rol: 'Administrador'
-            },{
-                username:'Nico.Miaus',
-                rol: 'Administrador'
+            },
+            {
+                username:'UsuBasic03',
+                rol: 'Usuario'
             }]
         }
     },
