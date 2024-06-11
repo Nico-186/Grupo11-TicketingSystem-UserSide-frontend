@@ -34,11 +34,11 @@ export default {
         return {
             activeListItem: -1,
             usuarios:[{
-                username:'test',
+                username:'Ejemplo 1',
                 rol: 'Tecnico'
             },
             {
-                username:'Nico.Miaus',
+                username:'Ejemplo 2',
                 rol: 'Administrador'
             },
             {

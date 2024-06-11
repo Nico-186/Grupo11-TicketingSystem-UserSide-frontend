@@ -34,8 +34,8 @@
 export default {
     data() {
         return {
-            isCreate: false,
-            username: 'Nico.miaus',
+            isCreate: true,
+            username: 'Usuario ejemplo',
             newPassword: '',
             role: 2,
             activeListItem: -1,

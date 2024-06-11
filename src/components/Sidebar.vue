@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-collapse fixed-top" style="height: 10%; background-color: #0d6efd;">
+    <nav class="navbar navbar-collapse fixed-top p-0" style="height: 10%; background-color: #0d6efd; position: relative; z-index: 2;">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" @click.prevent="showDashboard()">
                 <span class="navbar-toggler-icon"></span>
@@ -8,9 +8,10 @@
             <span class="navbar-toggler-icon px-3" style="visibility: hidden;"></span>
         </div>
     </nav>
-    <div class="offcanvas offcanvas-start w-auto" style="height: 90%; margin-top: 5%;" :class="dashboard ? 'show' : ''"
+    <div class="offcanvas offcanvas-start w-auto h-100" style="z-index: 1;" :class="dashboard ? 'show' : ''"
         tabindex="-1" :style="{ visibility: dashboard ? 'visible' : 'hidden' }">
         <div class="offcanvas-body py-0">
+            <div class="w-100" style="height: 10%;"></div>
             <a v-for="link in links(role)" class="nav-link active fs-6 py-2" :href="link.link">{{link.text}}</a>
         </div>
     </div>
@@ -21,7 +22,7 @@ export default {
     data(){
         return {
           dashboard: false,
-          role: 0
+          role: 2
         }
     },
     methods: {
