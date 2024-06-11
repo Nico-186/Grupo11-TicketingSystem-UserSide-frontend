@@ -22,4 +22,4 @@ vue serve
 npm install
 npm run serve
 ```
-[^1]: Miau!!! 🐱🐱🐱
+Miau!!! 🐱🐱🐱
