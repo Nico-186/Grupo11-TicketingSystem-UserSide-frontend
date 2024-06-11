@@ -4,13 +4,20 @@ Projecto de demostracción para el ramo Computación distribuida | Grupo 11
 Sistema simple para gestión de tickets y usuarios
 ## Interfaces
 ### Inicio de sesion
-![CompDist Login](https://github.com/Nico-186/Grupo11-Ticketing-System/assets/102489026/d2a89b03-a011-4b2e-bcbb-ecbdc7b5e7d6)
+![CompDist Login](https://github.com/Nico-186/Grupo11-Ticketing-System/assets/102489026/97d03cc1-97d6-482e-be3a-c018f50eeed3)
 ### Lista para gestión de usuarios
-![CompDist userlist](https://github.com/Nico-186/Grupo11-Ticketing-System/assets/102489026/50e72657-4cb9-4dcc-8ed8-ff2890473cd1)
+![CompDist userlist](https://github.com/Nico-186/Grupo11-Ticketing-System/assets/102489026/0dba0321-2e7c-4e23-9ceb-89ca82053669)
+### Ejemplo con el sidebar desplegado
+![CompDist userlist sidebar](https://github.com/Nico-186/Grupo11-Ticketing-System/assets/102489026/5287f19e-be7c-4201-b33a-e5724f850811)
+### Editar datos propios
+![CompDist cambiar datos](https://github.com/Nico-186/Grupo11-Ticketing-System/assets/102489026/55c295f3-4d7d-42d3-a3bb-f480beffe149)
+
+## Interfaces de Administrador
 ### Editar usario
-![CompDist useredit](https://github.com/Nico-186/Grupo11-Ticketing-System/assets/102489026/f84ba04b-ccf9-4996-a079-2e9afbd706b1)
+![CompDist useredit](https://github.com/Nico-186/Grupo11-Ticketing-System/assets/102489026/a7c8cef6-a054-49b7-b07b-dfb1d8132ba1)
 ### Crear usuario
-![CompDist usercreate](https://github.com/Nico-186/Grupo11-Ticketing-System/assets/102489026/fac7ec99-2c99-47fe-b06a-b568c5af0a41)
+![CompDist usercreate](https://github.com/Nico-186/Grupo11-Ticketing-System/assets/102489026/c479ca27-3970-4e4a-84a1-360d1dc3004b)
+
 
 ## Setup e iniciar projecto
 ```
@@ -22,4 +29,4 @@ vue serve
 npm install
 npm run serve
 ```
-Miau!!! 🐱🐱🐱
+🐱🐱🐱
