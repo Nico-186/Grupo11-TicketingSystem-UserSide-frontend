@@ -1,19 +1,20 @@
 <template>
     <div>
-        <login>
-
-
-            
-        </login>
+        <dashboard>
+        </dashboard>
+        <!-- <login>
+        </login> -->
     </div>
 </template>
 
 <script>
+import dashboard from './components/Dashboard.vue';
 import login from './components/Login.vue';
 
 export default {
     components: {
-        login
+        login,
+        dashboard
     },
     data() {
         return {

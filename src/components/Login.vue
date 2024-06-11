@@ -14,10 +14,10 @@
                         <label>Contraseña</label>
                         <div class="row w-100 g-0">
                             <div class="col p-0">
-                                <input :type="passwordType" class="form-control" placeholder="Ingrese su contraseña">
+                                <input :type="passwordType.type" class="form-control" placeholder="Ingrese su contraseña">
                             </div>
                             <div class="col-auto p-0">
-                                <button type="button" class="btn btn-secondary" @click.prevent="isPassword = !isPassword">Mostrar</button>
+                                <button type="button" class="btn btn-secondary" @click.prevent="isPassword = !isPassword">{{passwordType.text}}</button>
                             </div>
                         </div>
                     </div>
@@ -34,9 +34,15 @@ export default {
     computed: {
         passwordType() {
             if (this.isPassword) {
-                return 'password'
+                return {
+                    type: 'password',
+                    text: 'Mostrar'
+                }
             } else {
-                return 'text'
+                return {
+                    type: 'text',
+                    text: 'Ocultar'
+                }
             }
         }
     },
