@@ -5,10 +5,10 @@
         <div class="container-fluid" style="height: 90%;" :style="checkSidebar ? 'padding: 0% 0% 0% 17%;' : 'padding: 0%;'" >
             <!-- <gestionDatos>
             </gestionDatos> -->
-             <!-- <gestionUsuario>
-            </gestionUsuario> -->
-            <listaUsuariosAdmin>
-            </listaUsuariosAdmin> 
+             <gestionUsuario>
+            </gestionUsuario>
+            <!-- <listaUsuariosAdmin>
+            </listaUsuariosAdmin>  -->
         </div> 
     </div>
 

@@ -34,7 +34,7 @@
 export default {
     data() {
         return {
-            isCreate: false,
+            isCreate: true,
             username: 'Usuario ejemplo',
             newPassword: '',
             role: 2,
