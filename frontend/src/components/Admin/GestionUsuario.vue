@@ -6,7 +6,7 @@
             </div>
             <div class="form-group mb-4 w-100">
                 <label>Nombre de usuario</label>
-                <input type="text" class="form-control" placeholder="Nombre de usuario" :value="isCreate ? '' : username">
+                <input ref="username" v-model="username" type="text" class="form-control" placeholder="Nombre de usuario">
             </div>
             <div class="form-group mb-4 w-100">
                 <label>Reestablecer contraseña</label>
@@ -24,30 +24,33 @@
                     <button v-for="(rol, index) in roleTypes" :id="index" type="button" class="list-group-item list-group-item-action" :class="{ active: activeListItem == index}" @click.prevent="changeActiveListItem(index)">{{rol}}</button>
                 </ul>
             </div>
-            <button type="button" class="btn btn-success mb-3 w-100">{{ isCreate ? 'Crear usuario' : 'Guardar usuario' }}</button>
-            <button type="button" class="btn btn-danger w-50" :style="{ visibility: !isCreate ? 'visible' : 'hidden' }">Eliminar usuario</button>
+            <button type="button" class="btn btn-success mb-3 w-100" @click.prevent="createUser(id, returnUser(), isCreate)">{{ isCreate ? 'Crear usuario' : 'Guardar usuario' }}</button>
+            <button type="button" class="btn btn-danger w-50" @click.prevent="deleteUser(id)" :style="{ visibility: !isCreate ? 'visible' : 'hidden' }">Eliminar usuario</button>
         </div>
     </div>
 </template>
 
 <script>
 export default {
+    props: ['createUser', 'isCreate', 'user', 'deleteUser'],
     data() {
         return {
-            isCreate: true,
-            username: 'Usuario ejemplo',
+            id: '',
+            username: '',
             newPassword: '',
-            role: 2,
+            oldPassword: '',
+            role: 0,
             activeListItem: -1,
             roleTypes: [ 'Usuario', 'Tecnico', 'Administrador' ]
         }
     },
-    mounted:function() {
-        this.showRoleOnList();
-    },
     methods: {
-        showDropdown() {
-            this.$refs.roleDropdown.show();
+        returnUser() {
+            if (this.newPassword == '') {
+                return { username: this.username, password: this.oldPassword, role: this.role };
+            } else {
+                return { username: this.username, password: this.newPassword, role: this.role };
+            }
         },
         passwordType(generate) {
             if (generate) {
@@ -58,12 +61,23 @@ export default {
         },
         changeActiveListItem(index) {
             this.activeListItem = index;
-            this.role = index + 1;
+            this.role = index;
         },
         showRoleOnList() {
             if (!this.isCreate) {
                 this.activeListItem = this.role;
             }
+        }
+    },
+    mounted() {
+        if (!this.isCreate) {
+            console.log(this.user);
+            this.username = this.user.nomusua;
+            this.id = this.user.ID_usuario;
+            this.oldPassword = this.user.Contraseña;
+            this.role = parseInt(this.user.rol);
+            this.$refs.username.value = this.username;
+            this.showRoleOnList()
         }
     }
 }

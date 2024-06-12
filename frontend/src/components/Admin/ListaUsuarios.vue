@@ -10,8 +10,8 @@
                             <button v-for="(user, index) in users" :id="index" type="button"
                                 class="list-group-item list-group-item-action" :class="{ active: activeListItem == index && user.rol != ''}" @click.prevent="changeActiveListItem(index, user.rol)">
                                 <div class="ms-2 me-auto">
-                                    <div class="fw-bold">{{user.username}}</div>
-                                    {{user.rol}}
+                                    <div class="fw-bold">{{user.nomusua}}</div>
+                                    {{roleTypes[user.rol]}}
                                 </div>
                             </button>
                         </ul>
@@ -33,7 +33,8 @@ export default {
     props: ['users', 'editHandler'],
     data() {
         return {
-            activeListItem: -1
+            activeListItem: -1,
+            roleTypes: [ 'Usuario', 'Tecnico', 'Administrador' ]
         }
     },
     methods: {
@@ -45,7 +46,7 @@ export default {
             };
         },
         returnIsCreate() {
-            console.log(this.activeListItem == -1 ? true : false);
+            return this.activeListItem == -1 ? true : false;
         }
     }
 }

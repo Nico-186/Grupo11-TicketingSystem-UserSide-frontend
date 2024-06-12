@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const getAllUsers = require("./routes/adminGetAllUsers");
+const getAllUsers = require("./routes/adminAllUsers");
 const login = require("./routes/login");
 
 let app = express();
