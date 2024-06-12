@@ -6,7 +6,11 @@
 
         <div v-if="isLogged" id="content" class="container-fluid" style="height: 90%;"
             :style="checkSidebar ? 'padding: 0% 0% 0% 17%;' : 'padding: 0%;'">
-            <gestionDatos v-if="activePage == 1" :user="loggedUser"></gestionDatos>
+            <gestionDatos 
+            v-if="activePage == 1" 
+            :user="loggedUser"
+            :update-user="(user) => createUser(user.id,user,false,0)"
+            ></gestionDatos>
 
             <listaUsuariosAdmin 
             ref="adminUserList"
@@ -17,7 +21,7 @@
             
             <gestionUsuario 
             v-if="activePage == 2.1" 
-            :create-user="(id,user,isCreate) => createUser(id,user,isCreate)"
+            :create-user="(id,user,isCreate) => createUser(id,user,isCreate,2)"
             :is-create="createNewUser"
             :user="getSelectedListIndex()"
             :delete-user="(id) => deleteUser(id)"
@@ -97,17 +101,18 @@ export default {
             this.loggedUser = {
                 id: resData.ID_usuario,
                 username: resData.nomusua,
+                password: resData.Contraseña,
                 role: resData.rol
             } 
         },
-        async createUser(id, user, isCreate){
+        async createUser(id, user, isCreate, page){
             if (user.username == '' || user.role == -1 || (isCreate && user.newPassword == '')) {
                 alert("Ingrese todos los campos");
                 console.log(user);
             } else if (isCreate){
                 await axios.post(`http://localhost:3000/admin/allusers/`, user).then(
                     (response) => {
-                        this.activePage = 2;
+                        this.activePage = page;
                         this.loadAdmin();
                         return alert(`Usuario creado con exito`);
                     }).catch((error) =>{
@@ -116,7 +121,7 @@ export default {
             } else {
                 await axios.put(`http://localhost:3000/admin/allusers/?id=${id}`, user).then(
                     (response) => {
-                        this.activePage = 2;
+                        this.activePage = page;
                         this.loadAdmin();
                         return alert(`Usuario actualizado con exito`);
                     }).catch((error) =>{
