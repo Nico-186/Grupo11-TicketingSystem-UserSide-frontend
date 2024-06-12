@@ -1,9 +1,9 @@
 const db = require('./db');
 const helper = require('../helper');
 
-async function getUserData(id){
+async function getAllUsers(id){
     const rows = await db.query(
-      `SELECT ID_usuario, nomusua, rol FROM grupo11.usuario WHERE ID_usuario=${id};`
+      `SELECT ID_usuario, nomusua, rol FROM grupo11.usuario WHERE ID_usuario != ${id};`
     );
     const data = helper.emptyOrRows(rows);
   
@@ -11,5 +11,5 @@ async function getUserData(id){
 }
 
 module.exports = {
-    getUserData
+  getAllUsers
 }

@@ -6,9 +6,9 @@
 
         <div v-if="isLogged" id="content" class="container-fluid" style="height: 90%;"
             :style="checkSidebar ? 'padding: 0% 0% 0% 17%;' : 'padding: 0%;'">
-            <gestionDatos v-if="activePage == 1" :user="loggedUser.id"></gestionDatos>
-            <gestionUsuario v-if="activePage == -1"></gestionUsuario>
-            <listaUsuariosAdmin v-if="activePage == 2"></listaUsuariosAdmin> 
+            <gestionDatos v-if="activePage == 1" :user="loggedUser"></gestionDatos>
+            <listaUsuariosAdmin v-if="activePage == 2" :users="usersList" :edit-handler="(isCreate) => {createNewUser = isCreate; activePage = 2.1}"></listaUsuariosAdmin> 
+            <gestionUsuario v-if="activePage == 2.1"></gestionUsuario>
         </div>
     </div>
     
@@ -44,7 +44,12 @@ export default {
             activePage: 0,
             isLogged: false,
             loggedUser: { role: -1 },
-            mounted: false
+            mounted: false,
+            usersList: [{
+                username:'No existen usarios',
+                rol: ''
+            }],
+            createNewUser: false
         }
     },
     mounted() {
@@ -59,6 +64,18 @@ export default {
                     } else {
                         this.dataToLoggedUser(response.data[0]);
                         this.isLogged = true;
+                        if (this.loggedUser.role == 2){
+                            this.loadAdmin();
+                        }
+                    }
+                }
+            )
+        },
+        loadAdmin() {
+            axios.get(`http://localhost:3000/admin/allusers/?id=${this.loggedUser.id}`).then(
+                (response) => {
+                    if (JSON.stringify(response.data) != JSON.stringify([])) {
+                        console.log(response.data)
                     }
                 }
             )

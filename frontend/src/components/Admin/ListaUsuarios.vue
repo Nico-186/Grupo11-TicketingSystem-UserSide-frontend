@@ -7,11 +7,11 @@
                 <div class="flex-grow-1 overflow-auto w-100">
                     <div class="list-group h-100" style="max-height: 100%;">
                         <ul class="list-group">
-                            <button v-for="(usuario, index) in usuarios" :id="index" type="button"
-                                class="list-group-item list-group-item-action" :class="{ active: activeListItem == index}" @click.prevent="changeActiveListItem(index)">
+                            <button v-for="(user, index) in users" :id="index" type="button"
+                                class="list-group-item list-group-item-action" :class="{ active: activeListItem == index && user.rol != ''}" @click.prevent="changeActiveListItem(index, user.rol)">
                                 <div class="ms-2 me-auto">
-                                    <div class="fw-bold">{{usuario.username}}</div>
-                                    {{usuario.rol}}
+                                    <div class="fw-bold">{{user.username}}</div>
+                                    {{user.rol}}
                                 </div>
                             </button>
                         </ul>
@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="d-flex w-100 justify-content-end p-3">
-                    <button class="btn btn-secondary" type="button">{{ activeListItem == -1 ? 'Nuevo Usuario' : 'Editar Usuario' }}</button>
+                    <button class="btn btn-secondary" type="button" href="" @click.prevent="editHandler(returnIsCreate())">{{ activeListItem == -1 ? 'Nuevo Usuario' : 'Editar Usuario' }}</button>
                 </div>
             </div>
         </div>
@@ -30,66 +30,22 @@
 
 <script>
 export default {
+    props: ['users', 'editHandler'],
     data() {
         return {
-            activeListItem: -1,
-            usuarios:[{
-                username:'UsuTec01',
-                rol: 'Tecnico'
-            },
-            {
-                username:'UsuAdm01',
-                rol: 'Administrador'
-            },
-            {
-                username:'UsuAdm02',
-                rol: 'Administrador'
-            },
-            {
-                username:'UsuAdm03',
-                rol: 'Administrador'
-            },
-            {
-                username:'UsuBasic01',
-                rol: 'Usuario'
-            },
-            {
-                username:'UsuBasic02',
-                rol: 'Usuario'
-            },
-            {
-                username:'UsuTec02',
-                rol: 'Tecnico'
-            },
-            {
-                username:'UsuTec03',
-                rol: 'Tecnico'
-            },
-            {
-                username:'UsuTec04',
-                rol: 'Tecnico'
-            },
-            {
-                username:'UsuTec05',
-                rol: 'Tecnico'
-            },
-            {
-                username:'UsuAdm04',
-                rol: 'Administrador'
-            },
-            {
-                username:'UsuBasic03',
-                rol: 'Usuario'
-            }]
+            activeListItem: -1
         }
     },
     methods: {
-        changeActiveListItem(index) {
-            if (this.activeListItem == index){
-                this.activeListItem = -1;
-            } else {
+        changeActiveListItem(index,rol) {
+            if (this.activeListItem != index && rol != ''){
                 this.activeListItem = index;
+            } else {
+                this.activeListItem = -1;
             };
+        },
+        returnIsCreate() {
+            console.log(this.activeListItem == -1 ? true : false);
         }
     }
 }

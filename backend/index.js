@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const userData = require("./routes/userData");
+const getAllUsers = require("./routes/adminGetAllUsers");
 const login = require("./routes/login");
 
 let app = express();
@@ -18,8 +18,7 @@ app.get("/", async (req, res) => {
     res.json({ message: 'ok' });
 });
 
-app.use("/userData", userData);
-
+app.use("/admin/allUsers", getAllUsers)
 app.use("/logindata/", login);
 
 app.use((err, req, res, next) => {
