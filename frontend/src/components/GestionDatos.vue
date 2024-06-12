@@ -7,7 +7,7 @@
             <div class="form-group mb-4 w-100">
                 <label>Nombre de usuario</label>
                 <input type="text" class="form-control" placeholder="Nombre de usuario"
-                    :value="isCreate ? '' : username">
+                    :value="user.username">
             </div>
             <div class="form-group mb-4 w-100">
                 <label class="pb-2">Cambiar contraseña</label>
@@ -23,40 +23,15 @@
 import password from './Utils/Password.vue';
 
 export default {
-    props: ['username'],
+    props: ['user'],
     components: {
         password
     },
     data() {
         return {
-            usernamedsa: 'Usuario ejemplo',
             newPassworddsa: '',
             activeListItem: -1,
             roleTypes: [ 'Usuario', 'Tecnico', 'Administrador' ]
-        }
-    },
-    mounted:function() {
-        this.showRoleOnList();
-    },
-    methods: {
-        showDropdown() {
-            this.$refs.roleDropdown.show();
-        },
-        passwordType(generate) {
-            if (generate) {
-                this.newPassword = Math.random().toString(36).slice(-8);
-            } else {
-                this.newPassword = '';
-            }
-        },
-        changeActiveListItem(index) {
-            this.activeListItem = index;
-            this.role = index + 1;
-        },
-        showRoleOnList() {
-            if (!this.isCreate) {
-                this.activeListItem = this.role;
-            }
         }
     }
 }

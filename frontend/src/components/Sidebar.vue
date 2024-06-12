@@ -12,17 +12,17 @@
         tabindex="-1" :style="{ visibility: dashboard ? 'visible' : 'hidden' }">
         <div class="offcanvas-body py-0">
             <div class="w-100" style="height: 10%;"></div>
-            <a v-for="link in links(role)" class="nav-link active fs-6 py-2" :href="link.link">{{link.text}}</a>
+            <a v-for="link in links(role)" class="nav-link active fs-6 py-2" href="" @click.prevent="sidebarClick(link.page)">{{link.text}}</a>
         </div>
     </div>
 </template>
 
 <script>
 export default {
+    props: ['role', 'sidebarClick'],
     data(){
         return {
           dashboard: false,
-          role: 2
         }
     },
     methods: {
@@ -32,12 +32,10 @@ export default {
         links(role) {
             let linkList = []
             if (role >= 1) {
-                linkList.push({text: 'Cuenta', link: 'cuenta'});
-                linkList.push({text: 'Ejemplo tecnico', link: ''});
+                linkList.push({text: 'Cuenta', page: 1});
             }
             if (role == 2) {
-                linkList.push({text: 'Administrar usuarios', link: 'admin'});
-                linkList.push({text: 'Ejemplo administrador', link: ''});
+                linkList.push({text: 'Administrar usuarios', page: 2});
             }
             return linkList;
         }

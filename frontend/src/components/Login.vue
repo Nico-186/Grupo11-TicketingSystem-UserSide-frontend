@@ -8,10 +8,11 @@
                 <div class="d-grid gap-3">
                     <div class="form-group">
                         <label>Usuario</label>
-                        <input type="text" class="form-control" placeholder="Ingrese su usuario">
+                        <input v-model="username" type="text" class="form-control" placeholder="Ingrese su usuario">
                     </div>
-                    <password text="Contraseña" placeholder-text="Ingrese su contraseña"></password>
-                    <button type="button" class="btn btn-secondary">Ingresar</button>
+                    <password ref="passInput" text="Contraseña" placeholder-text="Ingrese su contraseña"></password>
+                    <button type="button" class="btn btn-secondary"
+                        @click.prevent="setValues(); tryLoggin(username, password)">Ingresar</button>
                 </div>
             </div>
         </div>
@@ -23,8 +24,14 @@
 import password from './Utils/Password.vue';
 
 export default {
+    props: ['tryLoggin'],
     components: {
         password
     },
+    methods: {
+        setValues() {
+            this.password = this.$refs.passInput.password;
+        }
+    }
 }
 </script>

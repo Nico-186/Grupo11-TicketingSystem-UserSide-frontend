@@ -3,7 +3,7 @@
         <label>{{text}}</label>
         <div class="row w-100 g-0">
             <div class="col p-0">
-                <input :type="passwordType.type" class="form-control" :placeholder="placeholderText">
+                <input v-model="password" :type="passwordType.type" class="form-control" :placeholder="placeholderText">
             </div>
             <div class="col-auto p-0">
                 <button type="button" class="btn btn-secondary"
@@ -29,12 +29,13 @@ export default {
                     text: 'Ocultar'
                 }
             }
-        }
+        },
     },
     data() {
         return {
+            password: '',
             isPassword: true
         }
-    }
+    },
 }
 </script>
