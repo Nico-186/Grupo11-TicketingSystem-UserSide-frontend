@@ -9,11 +9,12 @@
 </template>
 
 <script>
+import settings from '../../app.settings.json'
 export default {
     props: ['loggedUser', 'sidebarClick','activePage', 'changeToUser'],
     data() {
         return {
-            link: process.env.VUE_APP_REDIRECT
+            link: settings.REDIRECT_LINK
         }
     },
     methods: {
@@ -27,6 +28,9 @@ export default {
             }
             return linkList;
         },
+        test(){
+            console.log()
+        }
     }
 }
 </script>

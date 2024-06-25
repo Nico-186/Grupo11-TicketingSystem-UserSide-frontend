@@ -42,19 +42,20 @@ export default {
     data() {
         return {
             activePage: 0,
-            loggedUser: { justCreated: { data: [1] }, rol: -1 },
+            loggedUser: { justCreated: { data: [0] }, rol: -1 },
             usersList: [],
             allUsers: [],
             createNewUser: false
         }
     },
     mounted() {
-        this.loggedUser = cookies.get('loggedUser');
-        if (this.loggedUser == null){
-            window.location.href = 'http://localhost:8081/';
-        }
+        // this.loggedUser = cookies.get('loggedUser');
+        console.log(cookies.get('loggedUser'));
+        // if (this.loggedUser == null){
+        //     window.location.href = 'http://localhost:8081/';
+        // }
         cookies.remove('loggedUser');
-        this.loadData(1);
+        // this.loadData(1);
     },
     methods: {
         async loadData(page) {
