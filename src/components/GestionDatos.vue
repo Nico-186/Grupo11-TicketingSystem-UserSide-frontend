@@ -1,14 +1,14 @@
 <template>
-    <div class="container-fluid h-100 v-100 py-4" style="padding-left:25%; padding-right: 25%">
-        <div class="d-flex flex-column align-items-center">
-            <div class="d-flex justify-content-center m-2 w-100">
+    <div class="container-fluid h-100 v-100" style="padding-left:25%; padding-right: 25%">
+        <div class="d-flex flex-column align-items-center gap-4">
+            <div class="d-flex justify-content-center mt-2 w-100">
                 <h4 class="w-auto">{{ user.justCreated.data[0] != 1 ? 'Editar datos' : 'Debe cambiar su contraseña' }}</h4>
             </div>
-            <div v-if="user.justCreated.data[0] != 1" class="form-group mb-4 w-100">
+            <div v-if="user.justCreated.data[0] != 1" class="form-group w-100">
                 <label>Nombre de usuario</label>
                 <input v-model="newUsername" ref="usrText" type="text" class="form-control" placeholder="Nombre de usuario">
             </div>
-            <div class="form-group mb-4 w-100">
+            <div class="form-group w-100">
                 <label v-if="user.justCreated.data[0] != 1" class="pb-2">Cambiar contraseña</label>
                 <div class="form-group w-100">
                     <label>Ingrese nueva contraseña</label>
@@ -28,11 +28,11 @@
                     </label>
                 </div>
                 <button v-if="user.justCreated.data[0] != 1" type="button"
-                class="btn btn-success my-3 w-100"
+                class="btn btn-success my-4 w-100"
                 :disabled="!validatePass(newUsername,newPassword,user.nomusua)"
                 @click.prevent="updateUser(returnUser())">Guardar cambios</button>
                 <button v-if="user.justCreated.data[0] == 1" type="button"
-                class="btn btn-success my-3 w-100"
+                class="btn btn-success my-4 w-100"
                 :disabled="newPassword == '' || newPassword.length < 8 || !(new RegExp('[A-Z]').test(newPassword) && new RegExp('[a-z]').test(newPassword) && new RegExp('[0-9]').test(newPassword))"
                 @click.prevent="updateUser(returnUser()),updateFirst()">Cambiar contraseña</button>
             </div>
