@@ -9,12 +9,11 @@
 </template>
 
 <script>
-import settings from '../../app.settings.json'
 export default {
     props: ['loggedUser', 'sidebarClick','activePage', 'changeToUser'],
     data() {
         return {
-            link: settings.REDIRECT_LINK
+            link: process.env.REDIRECT_LINK
         }
     },
     methods: {
@@ -28,9 +27,6 @@ export default {
             }
             return linkList;
         },
-        test(){
-            console.log()
-        }
     }
 }
 </script>
