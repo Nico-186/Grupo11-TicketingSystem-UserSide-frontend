@@ -2,47 +2,100 @@
     <div class="container-fluid h-100 v-100 py-4" style="padding-left:25%; padding-right: 25%">
         <div class="d-flex flex-column align-items-center">
             <div class="d-flex justify-content-center m-2 w-100">
-                <h4 class="w-auto">Editar datos</h4>
+                <h4 class="w-auto">{{ user.justCreated.data[0] != 1 ? 'Editar datos' : 'Debe cambiar su contraseña' }}</h4>
             </div>
-            <div class="form-group mb-4 w-100">
+            <div v-if="user.justCreated.data[0] != 1" class="form-group mb-4 w-100">
                 <label>Nombre de usuario</label>
                 <input v-model="newUsername" ref="usrText" type="text" class="form-control" placeholder="Nombre de usuario">
             </div>
             <div class="form-group mb-4 w-100">
-                <label class="pb-2">Cambiar contraseña</label>
-                <password v-model="newPassword" class="pb-3" text="Ingrese nueva contraseña" placeholder-Text="Nueva contraseña"></password>
-                <button type="button" class="btn btn-success mb-3 w-100" @click.prevent="updateUser(returnUser())">Guardar cambios</button>
+                <label v-if="user.justCreated.data[0] != 1" class="pb-2">Cambiar contraseña</label>
+                <div class="form-group w-100">
+                    <label>Ingrese nueva contraseña</label>
+                    <div class="row w-100 g-0">
+                        <div class="col p-0">
+                            <input v-model="newPassword" :type="passwordType.type" class="form-control" placeholder="Nueva contraseña">
+                        </div>
+                        <div class="col-auto p-0">
+                            <button type="button" class="btn btn-secondary"
+                                @click.prevent="isPassword = !isPassword">{{passwordType.text}}</button>
+                        </div>
+                    </div>
+                    <label class="d-flex flex-column w-100 border border-dark-subtle px-3 py-1 rounded-2" style="opacity: 0.6;">Debe contener:
+                        <label class="ps-4">● Al menos 8 caracteres</label>
+                        <label class="ps-4">● Al menos 1 numeros</label>
+                        <label class="ps-4">● Letras mayusculas y minusculas</label>
+                    </label>
+                </div>
+                <button v-if="user.justCreated.data[0] != 1" type="button"
+                class="btn btn-success my-3 w-100"
+                :disabled="!validatePass(newUsername,newPassword,user.nomusua)"
+                @click.prevent="updateUser(returnUser())">Guardar cambios</button>
+                <button v-if="user.justCreated.data[0] == 1" type="button"
+                class="btn btn-success my-3 w-100"
+                :disabled="newPassword == '' || newPassword.length < 8 || !(new RegExp('[A-Z]').test(newPassword) && new RegExp('[a-z]').test(newPassword) && new RegExp('[0-9]').test(newPassword))"
+                @click.prevent="updateUser(returnUser()),updateFirst()">Cambiar contraseña</button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import password from './Utils/Password.vue';
 
 export default {
     props: ['user','updateUser'],
-    components: {
-        password
+    computed: {
+        passwordType() {
+            if (this.isPassword) {
+                return {
+                    type: 'password',
+                    text: 'Mostrar'
+                }
+            } else {
+                return {
+                    type: 'text',
+                    text: 'Ocultar'
+                }
+            }
+        },
     },
     data() {
         return {
             newUsername: '',
             newPassword: '',
-            activeListItem: -1,
-            roleTypes: [ 'Usuario', 'Tecnico', 'Administrador' ]
+            password: '',
+            isPassword: true
         }
     },
     mounted() {
-        this.$refs.usrText.value = this.user.username;
+        this.newUsername = this.user.nomusua;
     },
     methods: {
+        validatePass(newUsr, newPass, oldUsr){
+            if(newUsr == ''){
+                return false;
+            } else if (newUsr.trim() != oldUsr && (newPass == '' || (newPass.length >= 8 && new RegExp('[A-Z]').test(newPass) && new RegExp('[a-z]').test(newPass) && new RegExp('[0-9]').test(newPass)))){
+                return true;
+            } else if (newUsr.trim() == oldUsr && (newPass.length >= 8 && new RegExp('[A-Z]').test(newPass) && new RegExp('[a-z]').test(newPass) && new RegExp('[0-9]').test(newPass))){
+                return true;
+            } else {
+                return false;
+            }
+        },
         returnUser() {
             if (this.newPassword == '') {
-                return { id: this.user.id, username: this.newUsername, password: this.user.password, role: this.user.role };
+                return { id: this.user.ID_usuario, username: this.newUsername.trim(), password: this.user.Contraseña, role: Number(this.user.rol) };
             } else {
-                return { id: this.user.id, username: this.newUsername, password: this.newPassword, role: this.user.role };
+                return { id: this.user.ID_usuario, username: this.newUsername.trim(), password: this.newPassword, role: Number(this.user.rol) };
             }
+        },
+        async updateFirst(){
+            await axios.put(`${process.env.VUE_APP_BACKENDURL}/admin/allusers/firstloggin/?id=${this.user.ID_usuario}`).then(
+                (response) => {
+                    window.location.href = 'http://localhost:8081/';
+                }).catch((error) =>{
+                    return alert(error);
+                })
         }
     }
 }

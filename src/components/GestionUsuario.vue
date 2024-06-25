@@ -24,7 +24,12 @@
                     <button v-for="(rol, index) in roleTypes" :id="index" type="button" class="list-group-item list-group-item-action" :class="{ active: activeListItem == index}" @click.prevent="changeActiveListItem(index)">{{rol}}</button>
                 </ul>
             </div>
-            <button type="button" class="btn btn-success mb-3 w-100" @click.prevent="createUser(id, returnUser(), isCreate)">{{ isCreate ? 'Crear usuario' : 'Guardar usuario' }}</button>
+            <button type="button"
+            class="btn btn-success mb-3 w-100"
+            :disabled="username.trim() == '' || (newPassword == '' && oldPassword == '') || role == -1 || (username.trim() == user.nomusua && newPassword == '' && role == parseInt(user.rol))"
+            @click.prevent="createUser(id, returnUser(), isCreate)">
+                {{ isCreate ? 'Crear usuario' : 'Guardar usuario' }}
+            </button>
             <button type="button" class="btn btn-danger w-50" @click.prevent="deleteUser(id)" :style="{ visibility: !isCreate ? 'visible' : 'hidden' }">Eliminar usuario</button>
         </div>
     </div>
@@ -39,7 +44,7 @@ export default {
             username: '',
             newPassword: '',
             oldPassword: '',
-            role: 0,
+            role: -1,
             activeListItem: -1,
             roleTypes: [ 'Usuario', 'Tecnico', 'Administrador' ]
         }

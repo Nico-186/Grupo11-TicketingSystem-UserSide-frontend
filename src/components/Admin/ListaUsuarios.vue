@@ -9,9 +9,9 @@
                         <ul class="list-group">
                             <button v-for="(user, index) in users" :id="index" type="button"
                                 class="list-group-item list-group-item-action" :class="{ active: activeListItem == index && user.rol != ''}" @click.prevent="changeActiveListItem(index, user.rol)">
-                                <div class="ms-2 me-auto">
-                                    <div class="fw-bold">{{user.nomusua}}</div>
-                                    {{roleTypes[user.rol]}}
+                                <div class="d-flex ms-2 me-auto align-items-center">
+                                    <div class="fs-5 fw-bold">{{user.nomusua}}</div>
+                                    <div style="white-space: pre;"> - {{roleTypes[user.rol]}} </div>
                                 </div>
                             </button>
                         </ul>
