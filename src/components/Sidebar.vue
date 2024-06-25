@@ -13,7 +13,7 @@ export default {
     props: ['loggedUser', 'sidebarClick','activePage', 'changeToUser'],
     data() {
         return {
-            link: process.env.REDIRECT_LINK
+            link: process.env.VUE_APP_REDIRECT
         }
     },
     methods: {
