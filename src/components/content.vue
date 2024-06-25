@@ -51,7 +51,7 @@ export default {
     mounted() {
         this.loggedUser = cookies.get('loggedUser');
         if (this.loggedUser == null){
-            window.location.href = 'http://localhost:8081/';
+            window.location.href = process.env.VUE_APP_REDIRECT;
         }
         cookies.remove('loggedUser');
         this.loadData(1);

@@ -92,7 +92,7 @@ export default {
         async updateFirst(){
             await axios.put(`${process.env.VUE_APP_BACKENDURL}/admin/allusers/firstloggin/?id=${this.user.ID_usuario}`).then(
                 (response) => {
-                    window.location.href = 'http://localhost:8081/';
+                    window.location.href = process.env.VUE_APP_REDIRECT;
                 }).catch((error) =>{
                     return alert(error);
                 })
