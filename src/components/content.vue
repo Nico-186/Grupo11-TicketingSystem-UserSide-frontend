@@ -51,7 +51,7 @@ export default {
     mounted() {
         this.loggedUser = cookies.get('loggedUser');
         if (this.loggedUser == null){
-            window.location.href = process.env.VUE_APP_REDIRECT;
+            window.location.href = 'http://localhost:8081/';
         }
         cookies.remove('loggedUser');
         this.loadData(1);
@@ -67,9 +67,6 @@ export default {
             this.loggedUser = this.allUsers.find((obj) => obj.ID_usuario == this.loggedUser.ID_usuario);
             this.allUsers.splice(this.allUsers.indexOf(this.loggedUser),1);
             this.usersList.push(...this.allUsers);
-            console.log(this.allUsers)
-            console.log(this.loggedUser)
-            console.log(this.usersList)
         },
         async getUsers() {
             await axios.get(`${process.env.VUE_APP_BACKENDURL}/admin/allusers/`).then(
